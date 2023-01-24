@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.108.0">
   
-    <title>Terminal</title>
+    <title>Search Results :: Terminal</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A simple, retro theme for Hugo" />
+<meta name="description" content="This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```" />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://m0rp30.github.io/hugo-test/" />
+<link rel="canonical" href="https://m0rp30.github.io/hugo-test/search/" />
 
 
 
@@ -44,10 +47,14 @@
 
 
 <meta property="og:locale" content="en" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Terminal">
-<meta property="og:description" content="A simple, retro theme for Hugo" />
-<meta property="og:url" content="https://m0rp30.github.io/hugo-test/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Search Results">
+<meta property="og:description" content="This file exists solely to respond to /search URL with the related search layout template.
+No content shown here is rendered, all content is based in the template layouts/page/search.html
+Setting a very low sitemap priority will tell search engines this is not important content.
+This implementation uses Fusejs, jquery and mark.js
+Initial setup Search depends on additional output content type of JSON in config.toml ``` [outputs] home = [&amp;ldquo;HTML&amp;rdquo;, &amp;ldquo;JSON&amp;rdquo;] ```" />
+<meta property="og:url" content="https://m0rp30.github.io/hugo-test/search/" />
 <meta property="og:site_name" content="Terminal" />
 
   
@@ -61,12 +68,8 @@
 
 
 
-  <link href="https://m0rp30.github.io/hugo-test/index.xml" rel="alternate" type="application/rss+xml" title="Terminal" />
 
 
-
-
-  <link href="https://m0rp30.github.io/hugo-test/index.json" rel="alternate" type="application/json" title="Terminal" />
 
 
 
@@ -154,72 +157,25 @@
 
   <div class="content">
     
-  
-  <div class="posts">
-    
-    
-
-    
-    
-      
-    
-    
-
-    
-      <article class="post on-list">
-        <h1 class="post-title">
-          <a href="https://m0rp30.github.io/hugo-test/posts/hello/">Hello Friend</a>
-        </h1>
-
-        <div class="post-meta">
-          
-            <time class="post-date">
-              2019-01-25 ::
-            </time>
-          
-          
-        </div>
-
-        
-          <span class="post-tags">
-            
-            #<a href="https://m0rp30.github.io/hugo-test/tags/post/">post</a>&nbsp;
-            
-            #<a href="https://m0rp30.github.io/hugo-test/tags/pippo/">pippo</a>&nbsp;
-            
-          </span>
-        
-
-        
-  <img src="https://m0rp30.github.io/hugo-test/hello.jpg"
-    class="post-cover"
-    alt="Hello Friend"
-    title="Cover Image" />
-
-
-        <div class="post-content">
-          
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec interdum metus. Aenean rutrum ligula sodales ex auctor, sed tempus dui mollis. Curabitur ipsum dui, aliquet nec commodo at, tristique eget ante. Donec quis dolor nec nunc mollis interdum vel in purus. Sed vitae leo scelerisque, sollicitudin elit sed, congue ante. In augue nisl, vestibulum commodo est a, tristique porttitor est. Proin laoreet iaculis ornare. Nullam ut neque quam.
-Fusce pharetra suscipit orci nec tempor.
-          
-        </div>
-
-        
-          <div>
-            <a class="read-more button" href="https://m0rp30.github.io/hugo-test/posts/hello/">Read more →</a>
-          </div>
-        
-      </article>
-    
-
-    <div class="pagination">
-  <div class="pagination__buttons">
-    
-    
+<section class="resume-section p-3 p-lg-5 d-flex flex-column">
+  <div class="my-auto" >
+    <form action="https://m0rp30.github.io/hugo-test/search">
+      <input id="search-query" name="s"/>
+    </form>
+    <div id="search-results">
+     <h3>Matching pages</h3>
+    </div>
   </div>
-</div>
+</section>
 
-  </div>
+<script id="search-result-template" type="text/x-js-template">
+    <div id="summary-${key}">
+      <h4><a href="${link}">${title}</a></h4>
+      <p>${snippet}</p>
+      ${ isset tags }<p>Tags: ${tags}</p>${ end }
+      ${ isset categories }<p>Categories: ${categories}</p>${ end }
+    </div>
+</script>
 
   </div>
 
