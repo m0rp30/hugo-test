@@ -1,35 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://m0rp30.github.io/hugo-test/tags/about/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/about/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/posts/hello/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/tags/pippo/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/tags/post/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/posts/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/tags/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/</loc>
-    <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/showcase/</loc>
-    <lastmod>2018-07-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://m0rp30.github.io/hugo-test/search/</loc>
-    <priority>0.1</priority>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://m0rp30.github.io/hugo-test/en/sitemap.xml</loc>
+    
+      <lastmod>2019-01-25T00:00:00+00:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://m0rp30.github.io/hugo-test/it/sitemap.xml</loc>
+    
+  </sitemap>
+  
+</sitemapindex>
