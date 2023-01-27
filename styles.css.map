@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "styles.css",
-	"sourceRoot": "/home/m0rp30/tmp/test",
+	"sourceRoot": "/home/m0rp30/tmp/hugo-search",
 	"sources": [
 		"css/base.scss",
 		"themes/terminal/assets/css/variables.scss",

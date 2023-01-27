@@ -1,16 +1,65 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://m0rp30.github.io/hugo-test/en/sitemap.xml</loc>
-    
-      <lastmod>2019-01-25T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://m0rp30.github.io/hugo-test/it/sitemap.xml</loc>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>/tags/altro/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/tags/post/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/categories/tech/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/tags/third/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/posts/third/</loc>
+    <lastmod>2023-01-26T23:32:27+01:00</lastmod>
+  </url><url>
+    <loc>/tags/caso/</loc>
+    <lastmod>2023-01-26T23:05:26+01:00</lastmod>
+  </url><url>
+    <loc>/categories/generic/</loc>
+    <lastmod>2023-01-26T23:05:26+01:00</lastmod>
+  </url><url>
+    <loc>/tags/second/</loc>
+    <lastmod>2023-01-26T23:05:26+01:00</lastmod>
+  </url><url>
+    <loc>/posts/second/</loc>
+    <lastmod>2023-01-26T23:05:26+01:00</lastmod>
+  </url><url>
+    <loc>/categories/test/</loc>
+    <lastmod>2023-01-26T23:05:26+01:00</lastmod>
+  </url><url>
+    <loc>/tags/first/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/first/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/general/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/post/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/search/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/test/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url>
+</urlset>

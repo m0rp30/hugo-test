@@ -1,108 +1,80 @@
-summaryInclude=60;
-var fuseOptions = {
-  shouldSort: true,
-  includeMatches: true,
-  threshold: 0.0,
-  tokenize:true,
-  location: 0,
-  distance: 100,
-  maxPatternLength: 32,
-  minMatchCharLength: 1,
-  keys: [
-    {name:"title",weight:0.8},
-    {name:"contents",weight:0.5},
-    {name:"tags",weight:0.3},
-    {name:"categories",weight:0.3}
-  ]
+// Opzioni per la ricerca di fuse
+const options = {
+    shouldSort: true,
+    location: 0,
+    distance: 100,
+    threshold: 0.4,
+    minMatchCharLength: 2,
+    // Chiavi di ricerca
+    keys: [
+	'title',
+        'permalink',
+	'tags',
+        'categories'
+        ]
 };
+const hidenTime = 15000; // Tempo di attesa prima che i risultati mostrati spariscano
+const n = 5; // Numero massimo di risultati da mostrare
+const contentLenght = 50; // Lunghezza del contenuto dei post riportati dalla ricerca
+
+// Elementi del DOM
+const searchInput = document.getElementById("searchInput"); // Campo di input per la query di ricerca
+const searchButton = document.getElementById("searchButton"); // Bottone di invio query
+const searchResult = document.getElementById("searchResults"); // Elemento padre che conterra' la lista dei risultati
 
 
-var searchQuery = param("s");
-if(searchQuery){
-  $("#search-query").val(searchQuery);
-  executeSearch(searchQuery);
-}else {
-  $('#search-results').append("<p>Please enter a word or phrase above</p>");
+// Event listener che controlla se nel campo inputSearch e' stato premuto RET
+searchInput.addEventListener('keyup', (event) => { if(event.key == "Enter") executeSearch(); });
+
+// Event listener che controlla se il bottone searchButton e' stato premuto
+searchButton.addEventListener('click', (event) => { if(event.button == 0) executeSearch() });
+
+
+// funzione che elabora il file JSON senza l'utilizzo di jquery
+function fetchJSONFile(path, callback) {
+  let httpRequest = new XMLHttpRequest();
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        let data = JSON.parse(httpRequest.responseText);
+          if (callback) callback(data);
+      }
+    }
+  };
+  httpRequest.open('GET', path);
+  httpRequest.send(); 
 }
 
+// Funzione che esegue la query di ricerca inserita nel campo searchInput
+function executeSearch() {
+    // Se il campo searchInput non e' vuoto
+    if(searchInput.value !== '') {
+	// Elabora il file JSON e restituisce un risultato
+	fetchJSONFile('/index.json', function(data){
+	    let fuse = new Fuse(data, options); // inizializza fuse
+	    let results = fuse.search(searchInput.value); // Variabile con i valori della ricerca con la ricerca passatagli
+	    let searchItems = ''; // Variabile che conterra' il risultato, elaborato, da mostrare
 
+	    // Se ci sono risultati
+	    if(results.length > 0){
+		// Cicla n risultati 
+		for (let i in results.slice(0, n)) {
+		    let result = results[i].item // Variabile di appoggio del singolo risultato
+		    // Concatena i risultati elaborati nella variabile seachItems
+		    searchItems = searchItems + '<li><a href="' + result.permalink + '" tabindex="0">' + '<span class="title">' + result.title + '</span><br /><span class="sc">'+ result.tags +' — ' + result.date + '</span><br /><span class="content">' + result.contents.slice(0, contentLenght) + '</span></a></li>';
+		}
+	    } else { // Se non ci sono risultati
+		searchitems = "<p>No matches found</p>";
+	    }
 
-function executeSearch(searchQuery){
-  $.getJSON( "/index.json", function( data ) {
-    var pages = data;
-    var fuse = new Fuse(pages, fuseOptions);
-    var result = fuse.search(searchQuery);
-    console.log({"matches":result});
-    if(result.length > 0){
-      populateResults(result);
-    }else{
-      $('#search-results').append("<p>No matches found</p>");
+	    // Fa partire il timer per nascondere i risultati
+	    setTimeout(() => {
+		searchResult.innerHTML = ''; // Elimina i risultati
+	    }, hidenTime);
+
+	    // Mostra i risultati
+	    searchResult.innerHTML = searchItems; // Mostra i risultati
+	    searchInput.value = '' // Svuota il campo searchInput
+	});
     }
-  });
-}
-
-function populateResults(result){
-  $.each(result,function(key,value){
-    var contents= value.item.contents;
-    var snippet = "";
-    var snippetHighlights=[];
-    var tags =[];
-    if( fuseOptions.tokenize ){
-      snippetHighlights.push(searchQuery);
-    }else{
-      $.each(value.matches,function(matchKey,mvalue){
-        if(mvalue.key == "tags" || mvalue.key == "categories" ){
-          snippetHighlights.push(mvalue.value);
-        }else if(mvalue.key == "contents"){
-          start = mvalue.indices[0][0]-summaryInclude>0?mvalue.indices[0][0]-summaryInclude:0;
-          end = mvalue.indices[0][1]+summaryInclude<contents.length?mvalue.indices[0][1]+summaryInclude:contents.length;
-          snippet += contents.substring(start,end);
-          snippetHighlights.push(mvalue.value.substring(mvalue.indices[0][0],mvalue.indices[0][1]-mvalue.indices[0][0]+1));
-        }
-      });
-    }
-
-    if(snippet.length<1){
-      snippet += contents.substring(0,summaryInclude*2);
-    }
-    //pull template from hugo templarte definition
-    var templateDefinition = $('#search-result-template').html();
-    //replace values
-    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
-    $('#search-results').append(output);
-
-    $.each(snippetHighlights,function(snipkey,snipvalue){
-      $("#summary-"+key).mark(snipvalue);
-    });
-
-  });
-}
-
-function param(name) {
-    return decodeURIComponent((location.search.split(name + '=')[1] || '').split('&')[0]).replace(/\+/g, ' ');
-}
-
-function render(templateString, data) {
-  var conditionalMatches,conditionalPattern,copy;
-  conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
-  //since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
-  copy = templateString;
-  while ((conditionalMatches = conditionalPattern.exec(templateString)) !== null) {
-    if(data[conditionalMatches[1]]){
-      //valid key, remove conditionals, leave contents.
-      copy = copy.replace(conditionalMatches[0],conditionalMatches[2]);
-    }else{
-      //not valid, remove entire section
-      copy = copy.replace(conditionalMatches[0],'');
-    }
-  }
-  templateString = copy;
-  //now any conditionals removed we can do simple substitution
-  var key, find, re;
-  for (key in data) {
-    find = '\\$\\{\\s*' + key + '\\s*\\}';
-    re = new RegExp(find, 'g');
-    templateString = templateString.replace(re, data[key]);
-  }
-  return templateString;
 }
