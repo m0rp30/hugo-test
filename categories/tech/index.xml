@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tech on My New Hugo Site</title>
+    <link>https://m0rp30.github.io/hugo-test/categories/tech/</link>
+    <description>Recent content in tech on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jan 2023 23:32:27 +0100</lastBuildDate><atom:link href="https://m0rp30.github.io/hugo-test/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Third</title>
+      <link>https://m0rp30.github.io/hugo-test/posts/third/</link>
+      <pubDate>Thu, 26 Jan 2023 23:32:27 +0100</pubDate>
+      
+      <guid>https://m0rp30.github.io/hugo-test/posts/third/</guid>
+      <description>Third Questo e&amp;rsquo; un articolo sulla scienza e non c&amp;rsquo;entra con gli altri due</description>
+      <content>&lt;h1 id=&#34;third&#34;&gt;Third&lt;/h1&gt;
+&lt;p&gt;Questo e&amp;rsquo; un articolo sulla scienza e non c&amp;rsquo;entra con gli altri due&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
