@@ -15,7 +15,7 @@ const options = {
 };
 const hidenTime = 5000 // Tempo di attesa prima che i risultati mostrati spariscano
 const n = 5 // Numero massimo di risultati da mostrare
-const jsonFile = '/hugo-test/index.json';
+const jsonFile = 'index.json';
 
 // Elementi del DOM
 const searchInput = document.getElementById("searchInput"); // Campo di input per la query di ricerca
